@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.essprjtjava.controller.SupprimerSeanceController"
+            prefHeight="650.0" prefWidth="900.0"
+            style="-fx-background-color: #f5f5f5;">
+
+    <top>
+        <VBox style="-fx-background-color: #e74c3c; -fx-padding: 20;">
+            <Label text="🗑️ Supprimer des Séances" textFill="white">
+                <font><Font name="System Bold" size="24.0"/></font>
+            </Label>
+            <Label text="Sélectionnez une ou plusieurs séances à supprimer" textFill="#ecf0f1">
+                <font><Font size="13.0"/></font>
+                <VBox.margin><Insets top="5.0"/></VBox.margin>
+            </Label>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20.0" style="-fx-padding: 30;">
+
+            <VBox spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <Label text="Liste des Séances" style="-fx-font-weight: bold; -fx-font-size: 18; -fx-text-fill: #2c3e50;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTotal" text="Total: 0" style="-fx-font-size: 13; -fx-text-fill: #7f8c8d;"/>
+                </HBox>
+
+                <!-- Filtres -->
+                <HBox spacing="15.0">
+                    <VBox spacing="5.0">
+                        <Label text="Filtrer par groupe:" style="-fx-font-size: 12; -fx-font-weight: bold;"/>
+                        <ComboBox fx:id="cbFiltreGroupe" promptText="Tous"
+                                  onAction="#handleFiltrer"
+                                  prefWidth="200.0" style="-fx-font-size: 12;"/>
+                    </VBox>
+
+                    <VBox spacing="5.0">
+                        <Label text="Filtrer par jour:" style="-fx-font-size: 12; -fx-font-weight: bold;"/>
+                        <ComboBox fx:id="cbFiltreJour" promptText="Tous"
+                                  onAction="#handleFiltrer"
+                                  prefWidth="150.0" style="-fx-font-size: 12;"/>
+                    </VBox>
+
+                    <VBox spacing="5.0">
+                        <Label text="Filtrer par professeur:" style="-fx-font-size: 12; -fx-font-weight: bold;"/>
+                        <ComboBox fx:id="cbFiltreProf" promptText="Tous"
+                                  onAction="#handleFiltrer"
+                                  prefWidth="250.0" style="-fx-font-size: 12;"/>
+                    </VBox>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Button text="🔄 Réinitialiser"
+                            onAction="#handleReinitialiserFiltres"
+                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 12; -fx-background-radius: 5; -fx-cursor: hand; -fx-padding: 8 15;"/>
+                </HBox>
+
+                <TableView fx:id="tableSeances" VBox.vgrow="ALWAYS" prefHeight="350.0">
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="50.0"/>
+                        <TableColumn fx:id="colGroupe" text="Groupe" prefWidth="100.0"/>
+                        <TableColumn fx:id="colJour" text="Jour" prefWidth="100.0"/>
+                        <TableColumn fx:id="colHoraire" text="Horaire" prefWidth="110.0"/>
+                        <TableColumn fx:id="colProf" text="Professeur" prefWidth="180.0"/>
+                        <TableColumn fx:id="colMatiere" text="Matière" prefWidth="150.0"/>
+                        <TableColumn fx:id="colSalle" text="Salle" prefWidth="80.0"/>
+                        <TableColumn fx:id="colActions" text="Actions" prefWidth="100.0"/>
+                    </columns>
+                </TableView>
+
+                <HBox spacing="15.0" alignment="CENTER">
+                    <Label fx:id="lblMessage" textFill="#27ae60" wrapText="true"
+                           style="-fx-font-size: 13; -fx-font-weight: bold;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Button fx:id="btnSupprimerSelection" text="🗑️ Supprimer la Sélection"
+                            onAction="#handleSupprimerSelection" disable="true"
+                            prefWidth="220.0" prefHeight="40.0"
+                            style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                </HBox>
+
+            </VBox>
+
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="15.0" alignment="CENTER_RIGHT" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #e0e0e0; -fx-border-width: 1 0 0 0;">
+            <Button text="Fermer" onAction="#handleFermer" prefWidth="120.0" prefHeight="40.0"
+                    style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
