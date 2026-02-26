@@ -77,7 +77,7 @@
     <!-- Pied de page -->
     <bottom>
         <HBox alignment="CENTER" style="-fx-background-color: #34495e; -fx-padding: 15;">
-            <Label text="© 2025 - Système de Gestion d'Emplois du Temps" textFill="#ecf0f1">
+            <Label text="© 2026 - Système de Gestion d'Emplois du Temps" textFill="#ecf0f1">
                 <font>
                     <Font size="12.0"/>
                 </font>
